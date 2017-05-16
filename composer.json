@@ -1,0 +1,21 @@
+{
+    "name": "onex/espier-swagger",
+    "description": "A swagger for lumen",
+    "keywords": ["swagger", "lumen"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "wuwei",
+            "email": "wuwei1124@me.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "zircote/swagger-php": "^2.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "Espier\\Swagger\\": "src"
+        }
+    }
+}
