@@ -61,7 +61,7 @@ class SwaggerApiDocsCommand extends Command
         else
         {
             throw new \InvalidArgumentException(
-                sprintf("php artisan api:swagger --output=./path/to/project")
+                sprintf("php artisan api:swagger --output=/path/to/project")
             );
         }
     }
