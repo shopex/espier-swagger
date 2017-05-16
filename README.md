@@ -27,6 +27,6 @@ http://example.com/index.php/api-doc
 如果需要使用mock server 则必须安装PHP的Yaml扩展，并且启动mock server服务
 
 ```
-php artisan api:swagger --mock-server-start.
+php artisan api:swagger --mock-server-start
 ```
 
