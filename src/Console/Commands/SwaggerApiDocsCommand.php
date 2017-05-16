@@ -131,6 +131,10 @@ class SwaggerApiDocsCommand extends Command
     private function SetupSwagger()
     {
         $resourcesPath = resource_path();
+        if( !is_dir($resourcesPath.'/views/') )
+        {
+            mkdir($resourcesPath.'/views/', 0777, true);
+        }
 
         $swaggerDocsController = __DIR__ . '/../../views/apiSwaggerDocs.php';
         copy($swaggerDocsController, $resourcesPath.'/views/apiSwaggerDocs.php');

@@ -13,8 +13,8 @@ class SwaggerServiceProvider extends ServiceProvider
 	public function boot()
     {
         $this->app->group(['namespace' => 'Espier\Swagger\Http\Controllers'], function ($app) {
-            $app->get('/api-doc', ['as' => 'api-doc', 'uses' => 'ApiSwaggerDocs@index']);
-            $app->get('/api-json', ['as' => 'api-json', 'uses' => 'ApiSwaggerDocs@getApisJson']);
+            $app->get('/espier/api-doc.html', ['as' => 'espier.api-doc', 'uses' => 'ApiSwaggerDocs@index']);
+            $app->get('/espier/api-json', ['as' => 'espier.api-json', 'uses' => 'ApiSwaggerDocs@getApisJson']);
         });
     }
 
