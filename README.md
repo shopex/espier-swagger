@@ -21,7 +21,7 @@ php artisan api:swagger --output=[/path/to/project];
 
 生成API JSON文件后通过路由访问
 ```
-http://example.com/espier/api-doc.html
+http://example.com/index.php/api-doc
 ```
 
 如果需要使用mock server 则必须安装PHP的Yaml扩展，并且启动mock server服务

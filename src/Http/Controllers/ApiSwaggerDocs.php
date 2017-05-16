@@ -25,16 +25,16 @@ class ApiSwaggerDocs extends BaseController
 
             if( $title == $request->input('title') )
             {
-                $activeUrl = route('api-json', ['title' => $title]);
+                $activeUrl = route('espier.api-json', ['title' => $title]);
             }
 
             $list[] = [
                 'title' => $title,
-                'link'  => route('api-doc', ['title' => $title])
+                'link'  => route('espier.api-doc', ['title' => $title])
             ];
         }
 
-        $activeUrl = $activeUrl ? : route('api-json', ['title' => $list[0]['title']]);
+        $activeUrl = $activeUrl ? : route('espier.api-json', ['title' => $list[0]['title']]);
         return view('apiSwaggerDocs', ['list'=>$list, 'url'=>$activeUrl]);
     }
 
