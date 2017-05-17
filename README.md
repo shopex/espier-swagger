@@ -25,12 +25,12 @@ SWAGGER_STORAGE_DIR=apidocs
 
 生成API JSON文件后通过路由访问
 ```
-http://example.com/api-doc.html
+http://example.com/api-doc
 ```
 
 如果需改变路由名称则可以通过`.env`配置
 ```
-SWAGGER_DOCS_ROUTER=api-doc.html
+SWAGGER_DOCS_ROUTER=api-doc
 ```
 
 如果需要使用mock server 则必须安装PHP的Yaml扩展，并且启动mock server服务

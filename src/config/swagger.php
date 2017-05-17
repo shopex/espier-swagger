@@ -16,6 +16,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'router' => env('SWAGGER_DOCS_ROUTER', 'api-doc.html'),
+    'router' => env('SWAGGER_DOCS_ROUTER', 'api-doc'),
 ];
 
