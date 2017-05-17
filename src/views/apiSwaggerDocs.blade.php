@@ -30,7 +30,7 @@
             </li>
             <?php foreach($list as $row) {?>
             <li>
-            <a href="<?php echo $row['link']?>" class="active">
+            <a href="<?php echo $row['link']?>" <?php if($row['active']){?>class="active" <?php }?>>
                     <i class="fa fa-edit"></i>
                     <strong><?php echo $row['title']?></strong>
                 </a>

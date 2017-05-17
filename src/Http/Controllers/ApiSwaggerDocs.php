@@ -23,14 +23,17 @@ class ApiSwaggerDocs extends BaseController
         {
             $title = basename($file, ".json").PHP_EOL;
 
+            $titleActive = false;
             if( $title == $request->input('title') )
             {
                 $activeUrl = route('espier.api-json', ['title' => $title]);
+                $titleActive = true;
             }
 
             $list[] = [
-                'title' => $title,
-                'link'  => route('espier.api-doc', ['title' => $title])
+                'title'  => $title,
+                'active' => $titleActive,
+                'link'   => route('espier.api-doc', ['title' => $title])
             ];
         }
 
