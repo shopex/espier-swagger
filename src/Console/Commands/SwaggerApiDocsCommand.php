@@ -136,8 +136,8 @@ class SwaggerApiDocsCommand extends Command
             mkdir($resourcesPath.'/views/', 0777, true);
         }
 
-        $swaggerDocsController = __DIR__ . '/../../views/apiSwaggerDocs.php';
-        copy($swaggerDocsController, $resourcesPath.'/views/apiSwaggerDocs.php');
+        $swaggerDocsController = __DIR__ . '/../../views/apiSwaggerDocs.blade.php';
+        copy($swaggerDocsController, $resourcesPath.'/views/apiSwaggerDocs.blade.php');
 
         $this->info('Copy Swagger UI Views to resources');
 
