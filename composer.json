@@ -11,7 +11,6 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "ext-Yaml": ">=1.0",
         "zircote/swagger-php": "^2.0"
     },
     "autoload": {

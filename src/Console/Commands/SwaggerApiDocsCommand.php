@@ -54,6 +54,13 @@ class SwaggerApiDocsCommand extends Command
         }
         elseif( $this->option('mock-server-start') )
         {
+            if( !function_exists("yaml_emit")  )
+            {
+                throw new \RuntimeException(
+                    sprintf("当前PHP未安装Yaml扩展，请先安装 http://php.net/manual/zh/book.yaml.php")
+                );
+            }
+
             $this->mockServer();
             $swaggerMockDir =  __DIR__ .'/../../../mock/';
             system('cd '. $swaggerMockDir. '&& swagger project start -m');
