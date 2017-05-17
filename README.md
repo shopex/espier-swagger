@@ -18,10 +18,19 @@ php artisan api:swagger --setup
 ```
 php artisan api:swagger --output=[/path/to/project];
 ```
+默认JSON文件生成目录为Storage的`apidocs`中，可通过在`.env`中新增配置改变存储目录名称
+```
+SWAGGER_STORAGE_DIR=apidocs
+```
 
 生成API JSON文件后通过路由访问
 ```
-http://example.com/index.php/api-doc
+http://example.com/api-doc.html
+```
+
+如果需改变路由名称则可以通过`.env`配置
+```
+SWAGGER_DOCS_ROUTER=api-doc.html
 ```
 
 如果需要使用mock server 则必须安装PHP的Yaml扩展，并且启动mock server服务

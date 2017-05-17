@@ -11,7 +11,7 @@ class ApiSwaggerDocs extends BaseController
 
     public function index(Request $request )
     {
-        $files = Storage::allFiles('apidocs');
+        $files = Storage::allFiles(config('swagger.storage_dir'));
         if( !$files )
         {
             return '文档不存在，请执行命令:php artisan api:swagger';
@@ -19,11 +19,11 @@ class ApiSwaggerDocs extends BaseController
 
         $list = [];
         $activeUrl = null;
+        $titleActive = true;
         foreach( $files as $file )
         {
             $title = basename($file, ".json").PHP_EOL;
 
-            $titleActive = false;
             if( $title == $request->input('title') )
             {
                 $activeUrl = route('espier.api-json', ['title' => $title]);
@@ -35,6 +35,8 @@ class ApiSwaggerDocs extends BaseController
                 'active' => $titleActive,
                 'link'   => route('espier.api-doc', ['title' => $title])
             ];
+
+            $titleActive = false;
         }
 
         $activeUrl = $activeUrl ? : route('espier.api-json', ['title' => $list[0]['title']]);
@@ -43,7 +45,7 @@ class ApiSwaggerDocs extends BaseController
 
     public function getApisJson(Request $request)
     {
-        $title = 'apidocs/'.$request->input('title').'.json';
+        $title = config('swagger.storage_dir').'/'.$request->input('title').'.json';
         return Storage::get($title);
     }
 }

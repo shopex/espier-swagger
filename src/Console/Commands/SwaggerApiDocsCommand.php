@@ -48,7 +48,7 @@ class SwaggerApiDocsCommand extends Command
             $title   = $swagger->info->title;
             $version = $swagger->info->version;
 
-            $file = 'apidocs/'.$title.'['.$version.'].json';
+            $file = config('swagger.storage_dir').'/'.$title.'['.$version.'].json';
             Storage::put($file, $swagger);
             $this->info('Written to Storage '.$file);
         }
@@ -68,7 +68,7 @@ class SwaggerApiDocsCommand extends Command
 
     private function mockServer()
     {
-        $files = Storage::allFiles('apidocs');
+        $files = Storage::allFiles(config('swagger.storage_dir'));
         if( !$files )
         {
             throw new \InvalidArgumentException(

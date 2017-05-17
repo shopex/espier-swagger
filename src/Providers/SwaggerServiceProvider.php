@@ -13,7 +13,7 @@ class SwaggerServiceProvider extends ServiceProvider
 	public function boot()
     {
         $this->app->group(['namespace' => 'Espier\Swagger\Http\Controllers'], function ($app) {
-            $app->get('api-doc', ['as' => 'espier.api-doc', 'uses' => 'ApiSwaggerDocs@index']);
+            $app->get(config('swagger.router'), ['as' => 'espier.api-doc', 'uses' => 'ApiSwaggerDocs@index']);
             $app->get('api-json', ['as' => 'espier.api-json', 'uses' => 'ApiSwaggerDocs@getApisJson']);
         });
     }
@@ -25,6 +25,9 @@ class SwaggerServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //加载config
+        $this->mergeConfigFrom(realpath(__DIR__.'/../config/swagger.php'), 'swagger');
+
         $this->app->singleton('command.api.swagger', function()
         {
             return new SwaggerApiDocsCommand;
