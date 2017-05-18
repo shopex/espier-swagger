@@ -44,10 +44,7 @@ php artisan api:swagger --mock-server-start
 以便于个人开发测试，那么则可以通过`.env`配置个人的host和basePath。
 
 ```
-#个人的api的host
 SWAGGER_API_HOST=
-
-#个人的api的basePath
 SWAGGER_API_BASE_PATH=
 ```
 
