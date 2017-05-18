@@ -47,6 +47,15 @@ class SwaggerApiDocsCommand extends Command
             $swagger = \Swagger\scan(base_path().'/'.$path);
             $title   = $swagger->info->title;
             $version = $swagger->info->version;
+            if( config('swagger.host') )
+            {
+                $swagger->host = config('swagger.host');
+            }
+
+            if( config('swagger.base_path') )
+            {
+                $swagger->basePath = config('swagger.base_path');
+            }
 
             $file = config('swagger.storage_dir').'/'.$title.'['.$version.'].json';
             Storage::put($file, $swagger);

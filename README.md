@@ -39,3 +39,15 @@ SWAGGER_DOCS_ROUTER=api-doc
 php artisan api:swagger --mock-server-start
 ```
 
+在开发阶段因为团队中每个人的环境配置不一致，API需要绑定不同的访问地址。
+那么则不能用API中定义的host和basePath作为测试地址。
+以便于个人开发测试，那么则可以通过`.env`配置个人的host和basePath。
+
+```
+#个人的api的host
+SWAGGER_API_HOST=
+
+#个人的api的basePath
+SWAGGER_API_BASE_PATH=
+```
+
