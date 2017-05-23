@@ -3,6 +3,7 @@ namespace Espier\Swagger\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Espier\Swagger\Console\Commands\SwaggerApiDocsCommand;
+use Doctrine\Common\Annotations\AnnotationReader as AnnotationReader;
 
 class SwaggerServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,9 @@ class SwaggerServiceProvider extends ServiceProvider
         {
             return new SwaggerApiDocsCommand;
         });
+
+        //Entities忽略SWG
+        AnnotationReader::addGlobalIgnoredNamespace('SWG');
 
         $this->commands(
             'command.api.swagger'
