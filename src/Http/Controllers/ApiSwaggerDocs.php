@@ -3,7 +3,6 @@
 namespace Espier\Swagger\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage as Storage;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class ApiSwaggerDocs extends BaseController
@@ -11,7 +10,7 @@ class ApiSwaggerDocs extends BaseController
 
     public function index(Request $request )
     {
-        $files = Storage::allFiles(config('swagger.storage_dir'));
+        $files = app('filesystem')->allFiles(config('swagger.storage_dir'));
         if( !$files )
         {
             return '文档不存在，请执行命令:php artisan api:swagger';
@@ -46,7 +45,7 @@ class ApiSwaggerDocs extends BaseController
     public function getApisJson(Request $request)
     {
         $title = config('swagger.storage_dir').'/'.$request->input('title').'.json';
-        return Storage::get($title);
+        return app('filesystem')->get($title);
     }
 }
 
