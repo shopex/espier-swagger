@@ -2,7 +2,6 @@
 
 namespace Espier\Swagger\Console\Commands;
 
-use Illuminate\Support\Facades\Storage as Storage;
 use Illuminate\Console\Command;
 class SwaggerApiDocsCommand extends Command
 {
@@ -58,7 +57,7 @@ class SwaggerApiDocsCommand extends Command
             }
 
             $file = config('swagger.storage_dir').'/'.$title.'['.$version.'].json';
-            Storage::put($file, $swagger);
+            app('filesystem')->put($file, $swagger);
             $this->info('Written to Storage '.$file);
         }
         elseif( $this->option('mock-server-start') )
@@ -84,7 +83,7 @@ class SwaggerApiDocsCommand extends Command
 
     private function mockServer()
     {
-        $files = Storage::allFiles(config('swagger.storage_dir'));
+        $files = app('filesystem')->allFiles(config('swagger.storage_dir'));
         if( !$files )
         {
             throw new \InvalidArgumentException(
@@ -96,7 +95,7 @@ class SwaggerApiDocsCommand extends Command
         $definitions = [];
         foreach( $files as $file )
         {
-            $json =  Storage::get($file);
+            $json =  app('filesystem')->get($file);
             $apidata = json_decode($json, true);
 
             foreach( $apidata['paths'] as $key=>$apiPath )
