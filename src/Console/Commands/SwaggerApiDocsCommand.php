@@ -161,7 +161,7 @@ class SwaggerApiDocsCommand extends Command
         $this->info('Copy Swagger UI css and js  to public');
 
         $findSwaggerCommand = exec('type swagger');
-        if( !stristr($findSwaggerCommand, '/usr/local/bin/swagger') )
+        if( !stristr($findSwaggerCommand, '/bin/swagger') )
         {
             system('npm install -g swagger');
         }
