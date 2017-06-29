@@ -46,7 +46,7 @@
         window.onload = function() {
           // Build a system
           const ui = SwaggerUIBundle({
-            url: "<?php echo $url;?>",
+            url: "<?php echo urldecode($url);?>",
             dom_id: '#swagger-ui',
             presets: [
               SwaggerUIBundle.presets.apis,

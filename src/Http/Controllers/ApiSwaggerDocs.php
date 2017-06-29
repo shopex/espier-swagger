@@ -21,7 +21,8 @@ class ApiSwaggerDocs extends BaseController
         $titleActive = $request->input('title') ? false : true;
         foreach( $files as $file )
         {
-            $title = basename($file, ".json").PHP_EOL;
+            $title = chop($file, ".json");
+            $title = substr($title, strlen(config('swagger.storage_dir'))+1);
 
             if( $title == $request->input('title'))
             {
