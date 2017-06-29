@@ -5,8 +5,7 @@
   <title>Espier API测试&文档</title>
   <link rel="stylesheet" href="{{ asset('swagger-ui/css/style.css') }}" media="screen" type="text/css" />
   <link rel="stylesheet" href="{{ asset('swagger-ui/swagger-ui.css') }}" type="text/css">
-   <style>
-    #nav {
+   <style> #nav {
         float:left;
         width : 18%;
         margin-right: 5px;
@@ -46,7 +45,7 @@
         window.onload = function() {
           // Build a system
           const ui = SwaggerUIBundle({
-            url: "<?php echo $url;?>",
+            url: "<?php echo urldecode($url);?>",
             dom_id: '#swagger-ui',
             presets: [
               SwaggerUIBundle.presets.apis,
