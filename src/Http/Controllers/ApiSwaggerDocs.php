@@ -21,8 +21,14 @@ class ApiSwaggerDocs extends BaseController
         $titleActive = $request->input('title') ? false : true;
         foreach( $files as $file )
         {
-            $title = chop($file, ".json");
-            $title = substr($title, strlen(config('swagger.storage_dir'))+1);
+            if( !strrchr($file, 'json')) {
+                continue;
+            }
+            $title = trim(chop($file, ".json"));
+
+            if(config('swagger.storage_dir')) {
+                $title = substr($title, strlen(config('swagger.storage_dir'))+1);
+            }
 
             if( $title == $request->input('title'))
             {
@@ -38,7 +44,6 @@ class ApiSwaggerDocs extends BaseController
 
             $titleActive = false;
         }
-
         $activeUrl = $activeUrl ? : route('espier.api-json', ['title' => $list[0]['title']]);
         return view('apiSwaggerDocs', ['list'=>$list, 'url'=>$activeUrl]);
     }
