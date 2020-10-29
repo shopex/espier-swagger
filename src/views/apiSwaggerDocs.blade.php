@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Espier API测试&文档</title>
-  <link rel="stylesheet" href="{{ asset('swagger-ui/css/style.css') }}" media="screen" type="text/css" />
-  <link rel="stylesheet" href="{{ asset('swagger-ui/swagger-ui.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ asset('swagger-ui/css/style.css',true) }}" media="screen" type="text/css" />
+  <link rel="stylesheet" href="{{ asset('swagger-ui/swagger-ui.css',true) }}" type="text/css">
    <style> #nav {
         float:left;
         width : 18%;
@@ -39,8 +39,8 @@
     </nav>
     <div id="section">
         <div id="swagger-ui"></div>
-        <script src="{{ asset('swagger-ui/swagger-ui-bundle.js') }}"> </script>
-        <script src="{{ asset('swagger-ui/swagger-ui-standalone-preset.js') }}"> </script>
+        <script src="{{ asset('swagger-ui/swagger-ui-bundle.js',true) }}"> </script>
+        <script src="{{ asset('swagger-ui/swagger-ui-standalone-preset.js',true) }}"> </script>
         <script>
         window.onload = function() {
           // Build a system
